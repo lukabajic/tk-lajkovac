@@ -23,10 +23,14 @@
   text-align: center;
   color: var(--color-grey);
 
-  margin-top: var(--gap-sm);
+  margin-bottom: var(--gap-lg);
 }
 
 .strong {
   color: var(--color-black);
   font-weight: 700;
+}
+
+.buttons > *:not(:last-child) {
+  margin-bottom: var(--gap-md);
 }

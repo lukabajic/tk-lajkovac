@@ -1,10 +1,10 @@
 html {
-  font-size: 62.5%; /* set 1rem = 10px */
+  font-size: 62.5%;
 }
 
 :root {
   --gap-xs: 0.375rem;
-  --gam-sm: 0.75rem;
+  --gap-sm: 0.75rem;
   --gap-md: 1.5rem;
   --gap-lg: 3rem;
   --border-radius: 1rem;

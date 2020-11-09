@@ -3,6 +3,7 @@ import React from "react";
 import * as styles from "./App.module.css";
 
 import Logo from "./Utility/Logo/Logo";
+import Button from "./Utility/Button/Button";
 
 const App = () => {
   return (
@@ -18,6 +19,14 @@ const App = () => {
         aplikacija teniskog kluba Lajkovac, uz pomoć koje možete pronaći kontakt
         drugih članova i zakazati meč.
       </p>
+      <div className={styles.buttons}>
+        <Button fluid primary href="/auth/login">
+          Ulogujte se
+        </Button>
+        <Button fluid secondary href="/auth/register">
+          Registrujte se
+        </Button>
+      </div>
     </main>
   );
 };
