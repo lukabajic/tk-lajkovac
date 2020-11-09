@@ -1,0 +1,53 @@
+.required {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+  padding: var(--gap-xs) 0;
+  background-color: var(--color-white);
+
+  color: var(--color-blue);
+  font-size: 1rem;
+}
+
+.error {
+  color: var(--color-red);
+}
+
+.error__text {
+  font-size: 1.2rem;
+  display: block;
+  margin: var(--gap-xs) 0 0;
+  margin-left: var(--gap-md);
+  color: var(--color-red);
+}
+
+.wrapper:not(:last-child) {
+  margin: 0 0 var(--gap-md);
+}
+
+.wrapper label {
+  display: block;
+  margin-bottom: var(--gap-xs);
+  margin-left: var(--gap-md);
+
+  font-size: 1.4rem;
+}
+
+.input {
+  position: relative;
+}
+
+.input input {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: var(--gap-md);
+  background-color: var(--color-white);
+  outline: none;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(26, 23, 22, 0.12);
+
+  font: inherit;
+}

@@ -1,0 +1,11 @@
+.form {
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.terms {
+  margin-top: var(--gap-sm);
+  text-align: center;
+  font-size: 1.4rem;
+}

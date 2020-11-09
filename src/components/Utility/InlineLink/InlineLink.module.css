@@ -1,0 +1,12 @@
+.link:link,
+.link:visited {
+  text-decoration: none;
+  color: var(--color-blue);
+  font-weight: 500;
+  font-size: inherit;
+}
+
+.link:hover,
+.link:active {
+  text-decoration: underline;
+}

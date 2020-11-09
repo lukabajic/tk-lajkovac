@@ -9,6 +9,7 @@ const Index = () => (
   <main className="App">
     <h1 className={styles.header}>
       <Logo />
+      <br />
       Zakazivanje termina.
       <br />
       Online, besplatno.
