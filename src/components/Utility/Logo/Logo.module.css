@@ -1,0 +1,10 @@
+.logo {
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.2rem;
+  color: var(--color-black);
+}
+
+.color {
+  color: var(--color-primary);
+}
