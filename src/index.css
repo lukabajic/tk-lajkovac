@@ -50,3 +50,13 @@ img {
   background-color: var(--color-primary);
   color: var(--color-white);
 }
+
+.App {
+  min-height: 100vh;
+
+  padding: var(--gap-md);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
