@@ -7,6 +7,7 @@ import Button from "../Utility/Button/Button";
 import InlineLink from "../Utility/InlineLink/InlineLink";
 
 const RegisterForm = () => {
+  // eslint-disable-next-line
   const [error, setError] = useState(); // will remove fast
 
   const [form, setForm] = useState({
