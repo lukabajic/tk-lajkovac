@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Teniski Klub Lajkovac
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was designed and developed by [me](https://www.lukabajic.dev).
+This repository contains the front-end.
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Official web application of Tennic Club Lajkovac.
 
-### `yarn start`
+Main purpose is to allow registered users to schedule a court to play.
+User can also access other registered users information to get in contact with them.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Later versions will implement:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- A way to challenge and accept challenges from other users
+- To keep track of the town league scores and schedules online
+- A recent match history of each user individually and in total
+- Ranking system
+- etc.
 
-### `yarn test`
+Will develop iOS/Android app later this year.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tech stack for this project:
 
-### `yarn build`
+This is a [MERN stack](https://www.mongodb.com/mern-stack) web app.
+React logic and server-side logic are separated into different directories/repositories.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [MongoDB](https://nextjs.org/) - for userbase and schedule.
+- [Express](https://nextjs.org/) - minimal and flexible Node.js framework.
+- [React](https://reactjs.org/) - UI and components.
+- [Node.js](https://nextjs.org/) - server.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Other packages used:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [Redux](https://redux.js.org/) - state management.
+- [React Redux](https://react-redux.js.org/) - react bindings for redux.
+- [Redux Thunk](https://github.com/reduxjs/redux-thunk) - middleware for async logic.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [mongoose](https://mongoosejs.com/) - makes communicating with MongoDB easier.
+- [dotenv](https://github.com/motdotla/dotenv) - loads local variables.
+- [jsonwebtoken](https://jwt.io/) - for authethication.
+- [bcryptjs](https://www.npmjs.com/package/bcryptjs) - password encryption.
+- [@sendgrid/mail](https://sendgrid.com/) - for verifaction and reset password emails.
