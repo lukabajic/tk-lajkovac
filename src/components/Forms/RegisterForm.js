@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import * as styles from "../Form.module.css";
+import * as styles from "./Form.module.css";
 
-import Field from "../Field/Field";
-import Button from "../../Utility/Button/Button";
-import InlineLink from "../../Utility/InlineLink/InlineLink";
+import Field from "./Field/Field";
+import Button from "../Utility/Button/Button";
+import InlineLink from "../Utility/InlineLink/InlineLink";
 
 const RegisterForm = () => {
   const [error, setError] = useState(); // will remove fast

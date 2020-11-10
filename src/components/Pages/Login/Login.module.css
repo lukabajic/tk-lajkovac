@@ -1,0 +1,13 @@
+.banner {
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto var(--gap-xl);
+}
+
+.header {
+  margin-bottom: var(--gap-sm);
+}
+
+.already {
+  font-weight: 500;
+}
