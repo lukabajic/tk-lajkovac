@@ -9,17 +9,11 @@ import Login from "./Pages/Login/Login";
 import Loader from "../components/Utility/Loader/Loader";
 
 const App = ({ loading, token }) => {
-  if (!loading && token) {
-    return (
-      <Switch>
-        <Route path="/">
-          <Index token={token} />
-        </Route>
-      </Switch>
-    );
+  if (loading) {
+    return <Loader />;
   }
 
-  if (!loading) {
+  if (!token) {
     return (
       <Switch>
         <Route path="/auth/register" exact>
@@ -36,7 +30,13 @@ const App = ({ loading, token }) => {
     );
   }
 
-  return <Loader />;
+  return (
+    <Switch>
+      <Route path="/">
+        <Index token={token} />
+      </Route>
+    </Switch>
+  );
 };
 
 const mapStateToProps = (state) => ({
