@@ -19,10 +19,10 @@ const App = ({ loading, token }) => {
         <Route path="/auth/register" exact>
           <Register />
         </Route>
-        <Route path="/auth/login">
+        <Route path="/auth/login" exact>
           <Login />
         </Route>
-        <Route path="/">
+        <Route path="/" exact>
           <Index />
         </Route>
         <Redirect to="/" />
@@ -32,9 +32,10 @@ const App = ({ loading, token }) => {
 
   return (
     <Switch>
-      <Route path="/">
+      <Route path="/" exact>
         <Index token={token} />
       </Route>
+      <Redirect to="/" />
     </Switch>
   );
 };
