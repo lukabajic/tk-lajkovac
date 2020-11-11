@@ -1,13 +1,14 @@
 import React from "react";
 
 import NotAuthenthicated from "./NotAuthenthicated/NotAuthenthicated";
+import Authenthicated from "./Authenthicated/Authenthicated";
 
 const Index = ({ token }) => {
-  if (token) {
-    return <h1>Authenthicated</h1>;
+  if (!token) {
+    return <NotAuthenthicated />;
   }
 
-  return <NotAuthenthicated />;
+  return <Authenthicated />;
 };
 
 export default Index;
