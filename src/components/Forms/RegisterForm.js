@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
 import * as styles from "./Form.module.css";
 
@@ -6,10 +7,9 @@ import Field from "./Field/Field";
 import Button from "../Utility/Button/Button";
 import InlineLink from "../Utility/InlineLink/InlineLink";
 
-const RegisterForm = () => {
-  // eslint-disable-next-line
-  const [error, setError] = useState(); // will remove fast
+import { auth } from "../../store/actions";
 
+const RegisterForm = ({ error, auth }) => {
   const [form, setForm] = useState({
     anyTouched: false,
     values: {
@@ -140,7 +140,12 @@ const RegisterForm = () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    // dispatch action
+
+    const email = form.values.email;
+    const password = form.values.password;
+
+    auth("register", email, password);
+
     setForm({
       ...form,
       values: { email: "", password: "", confPassword: "" },
@@ -169,12 +174,7 @@ const RegisterForm = () => {
       autoComplete="off"
       onSubmit={onSubmitHandler}
     >
-      {error && (
-        <div className={styles.error__server}>
-          <span className={styles.error__num}>{error.status}: </span>
-          {error.error}
-        </div>
-      )}
+      {error && <div className={styles.error__server}>{error}</div>}
       {renderedForm}
       <Button fluid primary type="submit" disabled={!isFormValid()}>
         Registruj se
@@ -187,4 +187,6 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+const mapStateToProps = (state) => ({ error: state.auth.error });
+
+export default connect(mapStateToProps, { auth })(RegisterForm);
