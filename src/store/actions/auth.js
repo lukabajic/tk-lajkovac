@@ -50,3 +50,21 @@ export const auth = (action, email, password) => async (dispatch) => {
     dispatch(authFail(err.message || err));
   }
 };
+
+export const authCheckStorage = () => (dispatch) => {
+  const token = JSON.parse(localStorage.getItem("token"));
+  if (!token) {
+    dispatch(logout());
+  } else {
+    const expirationDate = new Date(
+      JSON.parse(localStorage.getItem("expirationDate"))
+    );
+
+    if (expirationDate > new Date()) {
+      dispatch(authSuccess(token));
+      setAuthTimeout(expirationDate.getTime() - new Date().getTime());
+    } else {
+      dispatch(logout());
+    }
+  }
+};

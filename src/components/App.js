@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -8,7 +8,15 @@ import Login from "./Pages/Login/Login";
 
 import Loader from "../components/Utility/Loader/Loader";
 
-const App = ({ loading, token }) => {
+import { authCheckStorage } from "../store/actions";
+
+const App = ({ loading, token, authCheckStorage }) => {
+  useEffect(() => {
+    if (!token) {
+      authCheckStorage();
+    }
+  }, [authCheckStorage, token]);
+
   if (loading) {
     return <Loader />;
   }
@@ -45,4 +53,4 @@ const mapStateToProps = (state) => ({
   loading: state.auth.loading,
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { authCheckStorage })(App);
