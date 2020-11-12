@@ -10,7 +10,7 @@ import Loader from "../components/Utility/Loader/Loader";
 
 import { authCheckStorage } from "../store/actions";
 
-const App = ({ loading, token, user, authCheckStorage }) => {
+const App = ({ loading, token, authCheckStorage }) => {
   useEffect(() => {
     if (!token) {
       authCheckStorage();
@@ -50,7 +50,6 @@ const App = ({ loading, token, user, authCheckStorage }) => {
 
 const mapStateToProps = (state) => ({
   token: state.auth.token,
-  user: state.auth.user,
   loading: state.auth.loading || state.user.loading,
 });
 
