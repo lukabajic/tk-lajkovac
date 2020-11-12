@@ -27,3 +27,25 @@ export const fetchCurUser = (token) => async (dispatch) => {
     dispatch(userFail(err.message || err));
   }
 };
+
+export const verifyEmail = (token) => async (dispatch) => {
+  dispatch(userStart());
+
+  const URI = `http://localhost:8000/api/v1/user/verify`;
+
+  try {
+    const res = await fetch(URI, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+
+    const { user } = data;
+
+    dispatch(userSuccess(user));
+  } catch (err) {
+    dispatch(userFail(err.message || err));
+  }
+};

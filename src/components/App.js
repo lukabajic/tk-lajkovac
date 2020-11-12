@@ -5,12 +5,13 @@ import { connect } from "react-redux";
 import Index from "./Pages/Index/Index";
 import Register from "./Pages/Register/Register";
 import Login from "./Pages/Login/Login";
+import Verification from "./Pages/Verification";
 
 import Loader from "../components/Utility/Loader/Loader";
 
 import { authCheckStorage } from "../store/actions";
 
-const App = ({ loading, token, authCheckStorage }) => {
+const App = ({ loading, token, authCheckStorage, user }) => {
   useEffect(() => {
     if (!token) {
       authCheckStorage();
@@ -29,6 +30,19 @@ const App = ({ loading, token, authCheckStorage }) => {
         </Route>
         <Route path="/auth/login" exact>
           <Login />
+        </Route>
+        <Route path="/">
+          <Index />
+        </Route>
+      </Switch>
+    );
+  }
+
+  if (token && user && !user.emailVerified) {
+    return (
+      <Switch>
+        <Route path="/verification/:token" exact>
+          <Verification />
         </Route>
         <Route path="/" exact>
           <Index />
@@ -51,6 +65,7 @@ const App = ({ loading, token, authCheckStorage }) => {
 const mapStateToProps = (state) => ({
   token: state.auth.token,
   loading: state.auth.loading || state.user.loading,
+  user: state.user.user,
 });
 
 export default connect(mapStateToProps, { authCheckStorage })(App);
