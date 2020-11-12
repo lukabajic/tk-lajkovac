@@ -10,7 +10,7 @@ import Loader from "../components/Utility/Loader/Loader";
 
 import { authCheckStorage } from "../store/actions";
 
-const App = ({ loading, token, authCheckStorage }) => {
+const App = ({ loading, token, user, authCheckStorage }) => {
   useEffect(() => {
     if (!token) {
       authCheckStorage();
@@ -41,7 +41,7 @@ const App = ({ loading, token, authCheckStorage }) => {
   return (
     <Switch>
       <Route path="/" exact>
-        <Index token={token} />
+        <Index />
       </Route>
       <Redirect to="/" />
     </Switch>
@@ -50,6 +50,7 @@ const App = ({ loading, token, authCheckStorage }) => {
 
 const mapStateToProps = (state) => ({
   token: state.auth.token,
+  user: state.auth.user,
   loading: state.auth.loading || state.user.loading,
 });
 

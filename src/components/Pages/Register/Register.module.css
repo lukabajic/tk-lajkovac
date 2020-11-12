@@ -2,6 +2,7 @@
   width: 100%;
   max-width: 32rem;
   margin: 0 auto var(--gap-xl);
+  text-align: center;
 }
 
 .header {
@@ -10,4 +11,5 @@
 
 .already {
   font-weight: 500;
+  text-align: center;
 }

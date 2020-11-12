@@ -31,6 +31,18 @@ const Button = (props) => {
     );
   }
 
+  if (props.clicked) {
+    return (
+      <button
+        onClick={props.clicked}
+        className={buttonStyles.join(" ")}
+        disabled={props.disabled}
+      >
+        {props.children}
+      </button>
+    );
+  }
+
   return (
     <button className={buttonStyles.join(" ")} disabled={props.disabled}>
       {props.children}
