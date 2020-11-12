@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 import NotAuthenthicated from "./NotAuthenthicated/NotAuthenthicated";
 import Authenthicated from "./Authenthicated/Authenthicated";
@@ -10,8 +11,13 @@ const Index = ({ token, user }) => {
     return <NotAuthenthicated />;
   }
 
-  if (token && user && !user.emailVerified) {
-    return <PleaseVerify />;
+  if (user) {
+    if (!user.emailVerified) {
+      return <PleaseVerify />;
+    }
+    if (!user.displayName || !user.phone) {
+      return <Redirect to="/data" />;
+    }
   }
 
   return <Authenthicated />;

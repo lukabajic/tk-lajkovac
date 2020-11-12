@@ -51,3 +51,7 @@
 
   font: inherit;
 }
+
+.input input:focus {
+  border-color: rgba(var(--rgb-blue), 0.4);
+}

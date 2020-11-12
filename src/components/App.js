@@ -3,8 +3,9 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Index from "./Pages/Index/Index";
-import Register from "./Pages/Register/Register";
-import Login from "./Pages/Login/Login";
+import Register from "./Pages/Register";
+import Login from "./Pages/Login";
+import Data from "./Pages/Data";
 import Verification from "./Pages/Verification";
 
 import Loader from "../components/Utility/Loader/Loader";
@@ -38,18 +39,33 @@ const App = ({ loading, token, authCheckStorage, user }) => {
     );
   }
 
-  if (token && user && !user.emailVerified) {
-    return (
-      <Switch>
-        <Route path="/verification/:token" exact>
-          <Verification />
-        </Route>
-        <Route path="/" exact>
-          <Index />
-        </Route>
-        <Redirect to="/" />
-      </Switch>
-    );
+  if (user) {
+    if (!user.emailVerified) {
+      return (
+        <Switch>
+          <Route path="/verification/:token" exact>
+            <Verification />
+          </Route>
+          <Route path="/" exact>
+            <Index />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
+      );
+    }
+    if (!user.displayName || !user.phone) {
+      return (
+        <Switch>
+          <Route path="/data" exact>
+            <Data />
+          </Route>
+          <Route path="/" exact>
+            <Index />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
+      );
+    }
   }
 
   return (

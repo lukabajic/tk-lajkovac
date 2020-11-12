@@ -5,22 +5,21 @@ import * as styles from "./Form.module.css";
 
 import Field from "./Field/Field";
 import Button from "../Utility/Button/Button";
-import InlineLink from "../Utility/InlineLink/InlineLink";
 
-import { auth } from "../../store/actions";
+// import { auth } from "../../store/actions";
 
-const LoginForm = ({ error, auth }) => {
+const DataForm = ({ error, user }) => {
   const [form, setForm] = useState({
     anyTouched: false,
     values: {
-      email: "",
-      password: "",
+      displayName: user && user.displayName,
+      phone: user && user.phone,
     },
     fields: {
-      email: {
-        type: "email",
-        label: "Email",
-        placeholder: "primer@gmail.com",
+      displayName: {
+        type: "text",
+        label: "Ime i prezime",
+        placeholder: "Novak Đoković",
         autoFocus: true,
         meta: {
           valid: false,
@@ -28,10 +27,10 @@ const LoginForm = ({ error, auth }) => {
           error: null,
         },
       },
-      password: {
-        type: "password",
-        label: "Lozinka",
-        placeholder: "********",
+      phone: {
+        type: "text",
+        label: "Broj telefona",
+        placeholder: "063 982 0611",
         autoFocus: false,
         meta: {
           valid: false,
@@ -46,21 +45,21 @@ const LoginForm = ({ error, auth }) => {
     let error = null;
     let valid = true;
     switch (field) {
-      case "email":
+      case "displayName":
         if (!value) {
           error = "Obavezno polje";
           valid = false;
-        } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
-          error = "Nepravilna email adresa";
+        } else if (!/\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/gm.test(value)) {
+          error = "Unesite pravo ime i prezime";
           valid = false;
         }
         return { error, valid };
-      case "password":
+      case "phone":
         if (!value) {
           error = "Obavezno polje";
           valid = false;
-        } else if (value.length < 8) {
-          error = "Sifra treba da ima barem 8 karaktera";
+        } else if (!/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/g) {
+          error = "Unesite ispravan broj telefona";
           valid = false;
         }
         return { error, valid };
@@ -110,20 +109,22 @@ const LoginForm = ({ error, auth }) => {
   };
 
   const isFormValid = () => {
-    return form.fields.email.meta.valid && form.fields.password.meta.valid;
+    return form.fields.displayName.meta.valid && form.fields.phone.meta.valid;
   };
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
-    const email = form.values.email;
-    const password = form.values.password;
+    // eslint-disable-next-line
+    const displayName = form.values.displayName;
+    // eslint-disable-next-line
+    const phone = form.values.phone;
 
-    auth("login", email, password);
+    // dispatch action
 
     setForm({
       ...form,
-      values: { email: "", password: "" },
+      values: { displayName: "", phone: "" },
     });
   };
 
@@ -152,15 +153,18 @@ const LoginForm = ({ error, auth }) => {
       {error && <div className={styles.error__server}>{error}</div>}
       {renderedForm}
       <Button fluid primary type="submit" disabled={!isFormValid()}>
-        Uloguj se
+        Sačuvaj podatke
       </Button>
       <p className={styles.terms}>
-        Zaboravili ste lozinku? <InlineLink href="/">Restartuj</InlineLink>.
+        Vaš broj telefona će moći da vide ostali članovi kluba.
       </p>
     </form>
   );
 };
 
-const mapStateToProps = (state) => ({ error: state.auth.error });
+const mapStateToProps = (state) => ({
+  error: state.user.error,
+  user: state.user.user,
+});
 
-export default connect(mapStateToProps, { auth })(LoginForm);
+export default connect(mapStateToProps, {})(DataForm);

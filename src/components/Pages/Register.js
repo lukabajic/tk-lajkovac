@@ -1,10 +1,10 @@
 import React from "react";
 
-import * as styles from "./Register.module.css";
+import * as styles from "./FormPage.module.css";
 
-import RegisterForm from "../../Forms/RegisterForm";
-import Logo from "../../Utility/Logo/Logo";
-import InlineLink from "../../Utility/InlineLink/InlineLink";
+import RegisterForm from "../Forms/RegisterForm";
+import Logo from "../Utility/Logo/Logo";
+import InlineLink from "../Utility/InlineLink/InlineLink";
 
 const Register = () => {
   return (
