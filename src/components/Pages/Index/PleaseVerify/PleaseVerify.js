@@ -1,15 +1,15 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
 import * as styles from "./PleaseVerify.module.css";
 
 import Button from "../../../Utility/Button/Button";
 
-const PleaseVerify = () => {
-  const [disabled, setDisabled] = useState(false);
+import { resendVerify } from "../../../../store/actions";
 
+const PleaseVerify = ({ token, resendVerify }) => {
   const sendAgain = () => {
-    // dispatch action
-    setDisabled(true);
+    resendVerify(token);
   };
 
   return (
@@ -21,7 +21,7 @@ const PleaseVerify = () => {
           <span className={styles.color}>kliknite na link</span> u mejlu.
         </p>
       </div>
-      <Button fluid primary clicked={sendAgain} disabled={disabled}>
+      <Button fluid primary clicked={sendAgain}>
         Pošaljite ponovo
       </Button>
       <p className={styles.already}>
@@ -33,4 +33,6 @@ const PleaseVerify = () => {
   );
 };
 
-export default PleaseVerify;
+const mapStateToProps = (state) => ({ token: state.auth.token });
+
+export default connect(mapStateToProps, { resendVerify })(PleaseVerify);

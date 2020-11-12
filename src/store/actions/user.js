@@ -20,9 +20,12 @@ export const fetchCurUser = (token) => async (dispatch) => {
     });
     const data = await res.json();
 
-    const { user } = data;
-
-    dispatch(userSuccess(user));
+    if (!data.error) {
+      const { user } = data;
+      dispatch(userSuccess(user));
+    } else {
+      dispatch(userFail(data.error));
+    }
   } catch (err) {
     dispatch(userFail(err.message || err));
   }
@@ -42,9 +45,36 @@ export const verifyEmail = (token) => async (dispatch) => {
     });
     const data = await res.json();
 
-    const { user } = data;
+    if (!data.error) {
+      const { user } = data;
+      dispatch(userSuccess(user));
+    } else {
+      dispatch(userFail(data.error));
+    }
+  } catch (err) {
+    dispatch(userFail(err.message || err));
+  }
+};
 
-    dispatch(userSuccess(user));
+export const resendVerify = (token) => async (dispatch) => {
+  dispatch(userStart());
+
+  const URI = `http://localhost:8000/api/v1/user/resend`;
+
+  try {
+    const res = await fetch(URI, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+
+    if (!data.error) {
+      dispatch(userFail(null));
+    } else {
+      dispatch(userFail(data.error));
+    }
   } catch (err) {
     dispatch(userFail(err.message || err));
   }
