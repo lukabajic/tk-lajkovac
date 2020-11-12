@@ -1,12 +1,14 @@
 import * as actionTypes from "./actionTypes";
 
+import { userSuccess, fetchCurUser } from "./user";
+
 const authStart = () => ({ type: actionTypes.AUTH_START });
 
 const authSuccess = (token) => ({ type: actionTypes.AUTH_SUCCESS, token });
 
 const authFail = (error) => ({ type: actionTypes.AUTH_FAIL, error });
 
-const logout = () => {
+export const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("expirationDate");
   return {
@@ -34,7 +36,7 @@ export const auth = (action, email, password) => async (dispatch) => {
     const data = await res.json();
 
     if (!data.error) {
-      const { token, expiresIn } = data;
+      const { token, expiresIn, user } = data;
 
       const expirationDate = new Date(new Date().getTime() + expiresIn);
 
@@ -42,6 +44,7 @@ export const auth = (action, email, password) => async (dispatch) => {
       localStorage.setItem("expirationDate", JSON.stringify(expirationDate));
 
       dispatch(authSuccess(token));
+      dispatch(userSuccess(user));
       dispatch(setAuthTimeout(expiresIn));
     } else {
       dispatch(authFail(data.error));
@@ -63,6 +66,7 @@ export const authCheckStorage = () => (dispatch) => {
     if (expirationDate > new Date()) {
       dispatch(authSuccess(token));
       setAuthTimeout(expirationDate.getTime() - new Date().getTime());
+      dispatch(fetchCurUser(token));
     } else {
       dispatch(logout());
     }

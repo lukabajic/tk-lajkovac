@@ -1,1 +1,1 @@
-export { auth, authCheckStorage } from "./auth";
+export { auth, authCheckStorage, logout } from "./auth";

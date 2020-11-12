@@ -50,7 +50,7 @@ const App = ({ loading, token, authCheckStorage }) => {
 
 const mapStateToProps = (state) => ({
   token: state.auth.token,
-  loading: state.auth.loading,
+  loading: state.auth.loading || state.user.loading,
 });
 
 export default connect(mapStateToProps, { authCheckStorage })(App);

@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 
 // reducers
 import authReducer from "./reducers/auth";
+import userReducer from "./reducers/user";
 
 // redux dev tools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -10,6 +11,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // combining reducers
 const rootReducer = combineReducers({
   auth: authReducer,
+  user: userReducer,
 });
 
 const store = createStore(
