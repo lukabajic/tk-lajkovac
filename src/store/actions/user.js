@@ -79,3 +79,30 @@ export const resendVerify = (token) => async (dispatch) => {
     dispatch(userFail(err.message || err));
   }
 };
+
+export const updateData = (token, displayName, phone) => async (dispatch) => {
+  dispatch(userStart());
+
+  const URI = `http://localhost:8000/api/v1/user/update`;
+
+  try {
+    const res = await fetch(URI, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ displayName, phone }),
+    });
+    const data = await res.json();
+
+    if (!data.error) {
+      const { user } = data;
+      dispatch(userSuccess(user));
+    } else {
+      dispatch(userFail(data.error));
+    }
+  } catch (err) {
+    dispatch(userFail(err.message || err));
+  }
+};

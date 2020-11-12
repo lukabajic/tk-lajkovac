@@ -1,2 +1,2 @@
 export { auth, authCheckStorage, logout } from "./auth";
-export { verifyEmail, resendVerify } from "./user";
+export { verifyEmail, resendVerify, updateData } from "./user";

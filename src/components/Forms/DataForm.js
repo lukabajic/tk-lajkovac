@@ -6,9 +6,9 @@ import * as styles from "./Form.module.css";
 import Field from "./Field/Field";
 import Button from "../Utility/Button/Button";
 
-// import { auth } from "../../store/actions";
+import { updateData } from "../../store/actions";
 
-const DataForm = ({ error, user }) => {
+const DataForm = ({ error, user, token, updateData }) => {
   const [form, setForm] = useState({
     anyTouched: false,
     values: {
@@ -115,17 +115,10 @@ const DataForm = ({ error, user }) => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
-    // eslint-disable-next-line
     const displayName = form.values.displayName;
-    // eslint-disable-next-line
     const phone = form.values.phone;
 
-    // dispatch action
-
-    setForm({
-      ...form,
-      values: { displayName: "", phone: "" },
-    });
+    updateData(token, displayName, phone);
   };
 
   const renderedForm = Object.keys(form.fields).map((field) => (
@@ -165,6 +158,7 @@ const DataForm = ({ error, user }) => {
 const mapStateToProps = (state) => ({
   error: state.user.error,
   user: state.user.user,
+  token: state.auth.token,
 });
 
-export default connect(mapStateToProps, {})(DataForm);
+export default connect(mapStateToProps, { updateData })(DataForm);
