@@ -11,11 +11,14 @@ html {
   --border-radius: 1rem;
   --color-primary: #22b186;
   --color-black: #262322;
+  --rgb-black: 38, 35, 34;
   --color-grey: #666;
   --color-white: #fff;
   --color-blue: #0071e3;
   --rgb-blue: 0, 113, 227;
   --color-red: #e9572f;
+  --box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
 body {

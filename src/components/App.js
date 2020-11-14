@@ -71,7 +71,7 @@ const App = ({ loading, token, authCheckStorage, user, sidebar }) => {
 
   return (
     <React.Fragment>
-      {sidebar ? <Sidebar /> : null}
+      <Sidebar />
       <Switch>
         <Route path="/" exact>
           <Index />

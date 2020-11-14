@@ -1,17 +1,39 @@
 .nav {
-  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  height: 100vh;
   width: calc(100vw - 5.6rem);
+
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
   background-color: var(--color-white);
+  box-shadow: var(--box-shadow);
 
   padding: var(--gap-lg);
 
   transform: translateX(-100%);
+}
+
+.activate {
   animation: slide-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.deactivate {
+  animation: slide-out 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
 @keyframes slide-in {
   to {
     transform: translateX(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
   }
 }

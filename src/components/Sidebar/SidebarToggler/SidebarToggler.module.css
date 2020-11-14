@@ -1,0 +1,31 @@
+.wrapper {
+  position: fixed;
+  z-index: 1020;
+  top: var(--gap-md);
+  left: var(--gap-md);
+
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+  width: 4.8rem;
+  height: 4.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.wrapper:hover {
+  background-color: rgba(var(--rgb-black), 0.05);
+  cursor: pointer;
+}
+
+.scrolled {
+  box-shadow: var(--box-shadow);
+}
+
+.wrapper svg {
+  color: var(--color-grey);
+  width: 3.2rem;
+  height: 3.2rem;
+}
