@@ -10,6 +10,7 @@ import Verification from "./Pages/Verification";
 
 import Loader from "../components/Utility/Loader/Loader";
 import Sidebar from "../components/Sidebar/Sidebar";
+import SidebarToggler from "../components/Sidebar/SidebarToggler/SidebarToggler";
 
 import { authCheckStorage } from "../store/actions";
 
@@ -71,6 +72,7 @@ const App = ({ loading, token, authCheckStorage, user, sidebar }) => {
 
   return (
     <React.Fragment>
+      <SidebarToggler />
       <Sidebar />
       <Switch>
         <Route path="/" exact>

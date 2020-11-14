@@ -1,9 +1,4 @@
 .wrapper {
-  position: absolute;
-  z-index: 1020;
-  top: var(--gap-md);
-  right: var(--gap-md);
-
   border: none;
   background-color: transparent;
   border-radius: 50%;

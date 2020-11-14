@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 
 import App from "./components/App";
+import ScrollToTop from "./components/Utility/ScrollToTop";
 
 import store from "./store/store";
 
@@ -13,7 +14,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <ScrollToTop>
+          <App />
+        </ScrollToTop>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

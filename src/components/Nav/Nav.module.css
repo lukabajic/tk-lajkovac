@@ -10,9 +10,12 @@
   background-color: var(--color-white);
   box-shadow: var(--box-shadow);
 
-  padding: var(--gap-lg);
+  padding: 5.8rem var(--gap-lg) var(--gap-lg);
 
   transform: translateX(-100%);
+
+  display: flex;
+  flex-direction: column;
 }
 
 .activate {
@@ -21,6 +24,98 @@
 
 .deactivate {
   animation: slide-out 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.close {
+  position: absolute;
+  z-index: 1020;
+  top: var(--gap-md);
+  right: var(--gap-md);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  line-height: 1;
+  margin-top: 2.4rem;
+  margin-bottom: 2.4rem;
+  margin-left: var(--gap-md);
+}
+
+.logo {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-right: var(--gap-md);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  padding: var(--gap-md) 0;
+  border-radius: var(--border-radius);
+  margin-bottom: 0.8rem;
+  transition: all 0.2s;
+}
+
+.link,
+.link:link,
+.link:visited {
+  color: var(--color-black);
+}
+
+.link:hover {
+  color: var(--color-grey);
+}
+
+.link svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin: 0 var(--gap-md);
+}
+
+.active,
+.active:link,
+.active:visited {
+  color: var(--color-grey);
+}
+
+.hr {
+  border: 0;
+  height: 1px;
+  background-color: rgba(var(--rgb-black), 0.12);
+  margin: 1.6rem 0;
+}
+
+.footer {
+  margin-top: auto;
+  padding: 0 var(--gap-md);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+  width: 4.8rem;
+  height: 4.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.button:hover {
+  background-color: rgba(var(--rgb-black), 0.05);
+  cursor: pointer;
+}
+
+.button svg {
+  color: var(--color-grey);
+  width: 3.2rem;
+  height: 3.2rem;
 }
 
 @keyframes slide-in {

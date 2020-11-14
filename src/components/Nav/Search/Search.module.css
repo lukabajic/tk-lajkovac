@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+  padding: var(--gap-md);
+  background-color: rgba(var(--rgb-black), 0.05);
+  border-radius: var(--border-radius);
+  margin-bottom: 2.4rem;
+}
+
+.wrapper svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-right: var(--gap-md);
+  color: var(--color-grey);
+}
+
+.wrapper input {
+  min-width: 0;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+  color: var(--color-grey);
+  font-size: 1.6rem;
+}
