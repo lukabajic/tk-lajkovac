@@ -1,11 +1,19 @@
 import React from "react";
+import { connect } from "react-redux";
 
-const Authenthicated = () => {
+import { sidebarToggle } from "../../../../store/actions";
+
+const Authenthicated = ({ user, sidebarToggle }) => {
   return (
     <main className="App">
-      <h1>Authenthicated</h1>
+      {/* testing */}
+      <h1>{user && user.displayName}</h1>
+      <h1>{user && user.phone}</h1>
+      <button onClick={sidebarToggle}>Toggle</button>
     </main>
   );
 };
 
-export default Authenthicated;
+const mapStateToProps = (state) => ({ user: state.user.user });
+
+export default connect(mapStateToProps, { sidebarToggle })(Authenthicated);

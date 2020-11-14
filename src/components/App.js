@@ -9,10 +9,11 @@ import Data from "./Pages/Data";
 import Verification from "./Pages/Verification";
 
 import Loader from "../components/Utility/Loader/Loader";
+import Sidebar from "../components/Sidebar/Sidebar";
 
 import { authCheckStorage } from "../store/actions";
 
-const App = ({ loading, token, authCheckStorage, user }) => {
+const App = ({ loading, token, authCheckStorage, user, sidebar }) => {
   useEffect(() => {
     if (!token) {
       authCheckStorage();
@@ -69,12 +70,15 @@ const App = ({ loading, token, authCheckStorage, user }) => {
   }
 
   return (
-    <Switch>
-      <Route path="/" exact>
-        <Index />
-      </Route>
-      <Redirect to="/" />
-    </Switch>
+    <React.Fragment>
+      {sidebar ? <Sidebar /> : null}
+      <Switch>
+        <Route path="/" exact>
+          <Index />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
+    </React.Fragment>
   );
 };
 
@@ -82,6 +86,7 @@ const mapStateToProps = (state) => ({
   token: state.auth.token,
   loading: state.auth.loading || state.user.loading,
   user: state.user.user,
+  sidebar: state.sidebar.active,
 });
 
 export default connect(mapStateToProps, { authCheckStorage })(App);

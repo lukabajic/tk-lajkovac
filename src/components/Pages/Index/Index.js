@@ -6,7 +6,7 @@ import NotAuthenthicated from "./NotAuthenthicated/NotAuthenthicated";
 import Authenthicated from "./Authenthicated/Authenthicated";
 import PleaseVerify from "./PleaseVerify/PleaseVerify";
 
-const Index = ({ token, user }) => {
+const Index = ({ token, user, toggleSidebar }) => {
   if (!token) {
     return <NotAuthenthicated />;
   }
@@ -20,7 +20,7 @@ const Index = ({ token, user }) => {
     }
   }
 
-  return <Authenthicated />;
+  return <Authenthicated toggleSidebar={toggleSidebar} />;
 };
 
 const mapStateToprops = (state) => ({

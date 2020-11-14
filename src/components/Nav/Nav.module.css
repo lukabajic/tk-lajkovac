@@ -1,0 +1,17 @@
+.nav {
+  height: 100%;
+  width: calc(100vw - 5.6rem);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  background-color: var(--color-white);
+
+  padding: var(--gap-lg);
+
+  transform: translateX(-100%);
+  animation: slide-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes slide-in {
+  to {
+    transform: translateX(0);
+  }
+}
