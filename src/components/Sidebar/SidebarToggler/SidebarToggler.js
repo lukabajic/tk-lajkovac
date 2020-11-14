@@ -24,6 +24,7 @@ const SidebarToggler = ({ sidebarToggle }) => {
   return (
     <button onClick={sidebarToggle} className={buttonStyles.join(" ")}>
       <svg viewBox="0 0 512 512">
+        <title>Meni</title>
         <path
           fill="none"
           stroke="currentColor"
