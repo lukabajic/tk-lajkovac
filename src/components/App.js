@@ -7,6 +7,7 @@ import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import Data from "./Pages/Data";
 import Verification from "./Pages/Verification";
+import Schedule from "./Pages/Schedule/Schedule";
 
 import Loader from "../components/Utility/Loader/Loader";
 import Sidebar from "../components/Sidebar/Sidebar";
@@ -75,6 +76,9 @@ const App = ({ loading, token, authCheckStorage, user, sidebar }) => {
       <SidebarToggler />
       <Sidebar />
       <Switch>
+        <Route path="/schedule" exact>
+          <Schedule />
+        </Route>
         <Route path="/" exact>
           <Index />
         </Route>

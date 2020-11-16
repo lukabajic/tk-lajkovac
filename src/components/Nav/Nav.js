@@ -8,14 +8,16 @@ import ButtonIcon from "../Utility/ButtonIcon/ButtonIcon";
 import Logo from "../Utility/Logo/Logo";
 import Search from "./Search/Search";
 
-import IconHome from "./NavIcons/IconHome";
-import IconSchedule from "./NavIcons/IconSchedule";
-import IconUsers from "./NavIcons/IconUsers";
-import IconLeague from "./NavIcons/IconLeague";
-import IconArrow from "./NavIcons/IconArrow";
-import IconSettings from "./NavIcons/IconSettings";
-import IconHelp from "./NavIcons/IconHelp";
-import IconLogout from "./NavIcons/IconLogout";
+import {
+  IconHelp,
+  IconHome,
+  IconLogout,
+  IconSettings,
+  IconLeague,
+  IconSchedule,
+  IconUsers,
+} from "./NavIcons";
+import { ArrowLeft } from "../Utility/Icons";
 
 import { sidebarToggle, logout } from "../../store/actions";
 
@@ -32,7 +34,7 @@ const Nav = ({ active, sidebarToggle, logout }) => {
     <nav onClick={(e) => e.stopPropagation()} className={navStyles.join(" ")}>
       <div className={styles.close}>
         <ButtonIcon clicked={sidebarToggle}>
-          <IconArrow />
+          <ArrowLeft />
         </ButtonIcon>
       </div>
       <div className={styles.head}>
@@ -46,6 +48,7 @@ const Nav = ({ active, sidebarToggle, logout }) => {
         className={styles.link}
         activeClassName={styles.active}
         exact
+        onClick={sidebarToggle}
       >
         <IconHome />
         Početna
@@ -56,6 +59,7 @@ const Nav = ({ active, sidebarToggle, logout }) => {
         className={styles.link}
         activeClassName={styles.active}
         exact
+        onClick={sidebarToggle}
       >
         <IconSchedule />
         Termini
@@ -65,6 +69,7 @@ const Nav = ({ active, sidebarToggle, logout }) => {
         className={styles.link}
         activeClassName={styles.active}
         exact
+        onClick={sidebarToggle}
       >
         <IconUsers />
         Članovi
@@ -74,6 +79,7 @@ const Nav = ({ active, sidebarToggle, logout }) => {
         className={styles.link}
         activeClassName={styles.active}
         exact
+        onClick={sidebarToggle}
       >
         <IconLeague />
         Liga
@@ -84,6 +90,7 @@ const Nav = ({ active, sidebarToggle, logout }) => {
           className={styles.button}
           activeClassName={styles.active}
           exact
+          onClick={sidebarToggle}
         >
           <IconSettings />
         </NavLink>
@@ -92,6 +99,7 @@ const Nav = ({ active, sidebarToggle, logout }) => {
           className={styles.button}
           activeClassName={styles.active}
           exact
+          onClick={sidebarToggle}
         >
           <IconHelp />
         </NavLink>

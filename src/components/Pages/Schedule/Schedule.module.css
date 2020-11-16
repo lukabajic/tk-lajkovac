@@ -1,0 +1,160 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+}
+
+.header {
+  background-color: rgba(var(--rgb-black), 0.05);
+  padding: var(--gap-md);
+}
+
+.selected {
+  height: 4.8rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  margin-bottom: var(--gap-lg);
+
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 1rem;
+
+  margin-bottom: var(--gap-lg);
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: var(--gap-sm);
+  border-radius: var(--border-radius);
+  background-color: rgba(var(--rgb-black), 0.08);
+
+  text-align: center;
+  font-weight: 500;
+  color: var(--color-grey);
+
+  transition: all 0.2s;
+}
+
+.day:hover {
+  cursor: pointer;
+  background-color: rgba(var(--rgb-black), 0.12);
+}
+
+.day.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: var(--box-shadow);
+}
+
+.weekday {
+  font-size: 1rem;
+  text-transform: uppercase;
+
+  margin-bottom: var(--gap-sm);
+}
+
+.court {
+  flex: 1;
+  overflow: auto;
+
+  background-color: var(--color-white);
+  box-shadow: var(--box-shadow);
+  border-radius: 2.4rem 2.4rem 0 0;
+
+  margin-top: calc(-1 * var(--gap-md));
+  padding: var(--gap-md);
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: var(--gap-lg);
+}
+
+.where {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.schedule {
+  padding-bottom: var(--gap-md);
+}
+
+.schedule > *:not(:last-child) {
+  margin-bottom: var(--gap-md);
+}
+
+.free,
+.taken {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: var(--gap-md) var(--gap-md) var(--gap-md) calc(var(--gap-md) + 5px);
+  border-radius: var(--border-radius);
+
+  color: var(--color-grey);
+}
+
+.free::before,
+.taken::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+}
+
+.free {
+  box-shadow: var(--box-shadow);
+}
+
+.free::before {
+  background-color: var(--color-primary);
+}
+
+.free:hover {
+  cursor: pointer;
+}
+
+.taken::before {
+  background-color: var(--color-red);
+}
+
+.text {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.time {
+  font-size: 1.4rem;
+  font-weight: 500;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.start {
+  color: var(--color-black);
+  margin-bottom: var(--gap-xs);
+}
