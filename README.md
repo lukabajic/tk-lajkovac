@@ -1,7 +1,7 @@
 # Teniski Klub Lajkovac
 
 This project was designed and developed by [me](https://www.lukabajic.dev).
-This repository contains the front-end.
+This repository contains the front-end. Designed only for mobile atm.
 
 ## Description
 
