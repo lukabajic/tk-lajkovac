@@ -5,6 +5,7 @@ import thunk from "redux-thunk";
 import authReducer from "./reducers/auth";
 import userReducer from "./reducers/user";
 import sidebarReducer from "./reducers/sidebar";
+import scheduleReducer from "./reducers/schedule";
 
 // redux dev tools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   sidebar: sidebarReducer,
   user: userReducer,
+  schedule: scheduleReducer,
 });
 
 const store = createStore(

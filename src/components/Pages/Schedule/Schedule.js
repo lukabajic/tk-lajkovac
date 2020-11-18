@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
 import * as styles from "./Schedule.module.css";
 
@@ -6,7 +7,15 @@ import ButtonIcon from "../../Utility/ButtonIcon/ButtonIcon";
 
 import { ArrowLeft, ArrowRight } from "../../Utility/Icons";
 
-const Schedule = () => {
+import { fetchSchedule } from "../../../store/actions";
+
+const Schedule = ({ schedule, fetchSchedule, token }) => {
+  useEffect(() => {
+    if (!schedule) {
+      fetchSchedule(token);
+    }
+  }, [schedule, fetchSchedule, token]);
+
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
@@ -108,4 +117,9 @@ const Schedule = () => {
   );
 };
 
-export default Schedule;
+const mapStateToProps = (state) => ({
+  schedule: state.schedule.schedule,
+  token: state.auth.token,
+});
+
+export default connect(mapStateToProps, { fetchSchedule })(Schedule);

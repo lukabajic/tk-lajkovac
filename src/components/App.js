@@ -15,7 +15,7 @@ import SidebarToggler from "../components/Sidebar/SidebarToggler/SidebarToggler"
 
 import { authCheckStorage } from "../store/actions";
 
-const App = ({ loading, token, authCheckStorage, user, sidebar }) => {
+const App = ({ loading, token, authCheckStorage, user }) => {
   useEffect(() => {
     if (!token) {
       authCheckStorage();
@@ -90,9 +90,8 @@ const App = ({ loading, token, authCheckStorage, user, sidebar }) => {
 
 const mapStateToProps = (state) => ({
   token: state.auth.token,
-  loading: state.auth.loading || state.user.loading,
+  loading: state.auth.loading || state.user.loading || state.schedule.loading,
   user: state.user.user,
-  sidebar: state.sidebar.active,
 });
 
 export default connect(mapStateToProps, { authCheckStorage })(App);
