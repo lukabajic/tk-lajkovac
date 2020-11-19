@@ -6,4 +6,10 @@
   width: 100vw;
   z-index: 1030;
   background-color: rgba(38, 35, 34, 0.875);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: var(--gap-md);
 }

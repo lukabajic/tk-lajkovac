@@ -5,6 +5,7 @@ import * as styles from "./Schedule.module.css";
 
 import ScheduleHeader from "./ScheduleHeader/ScheduleHeader";
 import ScheduleBody from "./ScheduleBody/ScheduleBody";
+import ScheduleModal from "./ScheduleModal/ScheduleModal";
 
 import { fetchSchedule } from "../../../store/actions";
 
@@ -19,6 +20,8 @@ const Schedule = ({ schedule, fetchSchedule, token }) => {
     day: 0,
     court: 1,
   });
+
+  const [modal, setModal] = useState(null);
 
   const changeDay = (index) => {
     setSelected({
@@ -41,13 +44,25 @@ const Schedule = ({ schedule, fetchSchedule, token }) => {
     });
   };
 
+  const openModal = (data) => {
+    setModal({ start: data.start, end: data.end });
+  };
+
   return (
     <div className={styles.wrapper}>
+      {modal && (
+        <ScheduleModal
+          selected={selected}
+          data={modal}
+          closeModal={() => setModal(null)}
+        />
+      )}
       <ScheduleHeader selected={selected} changeDay={changeDay} />
       <ScheduleBody
         selected={selected}
         prevCourt={prevCourt}
         nextCourt={nextCourt}
+        openModal={openModal}
       />
     </div>
   );

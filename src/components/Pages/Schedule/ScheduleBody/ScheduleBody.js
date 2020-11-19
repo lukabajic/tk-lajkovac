@@ -8,7 +8,13 @@ import ButtonIcon from "../../../Utility/ButtonIcon/ButtonIcon";
 
 import { ArrowLeft, ArrowRight } from "../../../Utility/Icons";
 
-const ScheduleBody = ({ selected, prevCourt, nextCourt, schedule }) => {
+const ScheduleBody = ({
+  selected,
+  prevCourt,
+  nextCourt,
+  schedule,
+  openModal,
+}) => {
   const days = ["today", "tomorrow", "dayAfter"];
 
   const renderSchedule = () => {
@@ -19,7 +25,13 @@ const ScheduleBody = ({ selected, prevCourt, nextCourt, schedule }) => {
     const day = schedule[days[selected.day]];
     const court = day.courts[selected.court];
 
-    return court.map((time) => <ScheduleTime key={time.start} {...time} />);
+    return court.map((time) => (
+      <ScheduleTime
+        clicked={() => openModal(time)}
+        key={time.start}
+        {...time}
+      />
+    ));
   };
 
   return (

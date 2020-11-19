@@ -2,9 +2,9 @@ import React from "react";
 
 import * as styles from "./ScheduleTime.module.css";
 
-const ScheduleTime = ({ taken, start, end }) => {
+const ScheduleTime = ({ taken, start, end, clicked }) => {
   return (
-    <div className={!taken ? styles.free : styles.taken}>
+    <div className={!taken ? styles.free : styles.taken} onClick={clicked}>
       <p className={styles.text}>
         {!taken ? "Slobodan teren" : "Zauzet teren"}
       </p>

@@ -1,0 +1,34 @@
+.wrapper {
+  width: 100%;
+  padding: var(--gap-md);
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+
+  transform: scale(0);
+
+  animation: scale-in-center 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.text {
+  margin-bottom: var(--gap-md);
+  text-align: center;
+}
+
+p.text {
+  opacity: 0.875;
+  font-weight: 700;
+}
+
+.buttons {
+  margin-top: var(--gap-lg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: var(--gap-md);
+}
+
+@keyframes scale-in-center {
+  to {
+    transform: scale(1);
+  }
+}
