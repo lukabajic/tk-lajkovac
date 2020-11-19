@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { connect } from "react-redux";
 
 import * as styles from "./ScheduleModal.module.css";
 
@@ -8,8 +9,15 @@ import Button from "../../../Utility/Button/Button";
 
 import getDate from "../../../Utility/getDate";
 
-const ScheduleModal = ({ data, selected, closeModal }) => {
+import { scheduleTime } from "../../../../store/actions";
+
+const ScheduleModal = ({ data, selected, closeModal, scheduleTime, token }) => {
   const days = ["Danas", "Sutra", "Prekosutra"];
+
+  const handleScheduleTime = () => {
+    scheduleTime(token, selected.court, data.start, selected.day);
+    closeModal();
+  };
 
   const modal = (
     <Backdrop clicked={closeModal}>
@@ -24,7 +32,7 @@ const ScheduleModal = ({ data, selected, closeModal }) => {
           <sup>{data.end.slice(2, 4)}</sup>.
         </p>
         <div className={styles.buttons}>
-          <Button fluid primary>
+          <Button fluid primary clicked={handleScheduleTime}>
             Zakazi
           </Button>
           <Button fluid secondary clicked={closeModal}>
@@ -41,13 +49,6 @@ const ScheduleModal = ({ data, selected, closeModal }) => {
   );
 };
 
-/**
- * required props
- *
+const mapStateToProps = (state) => ({ token: state.auth.token });
 
- * court number
- * closeModal
- * makeappointment
- */
-
-export default ScheduleModal;
+export default connect(mapStateToProps, { scheduleTime })(ScheduleModal);

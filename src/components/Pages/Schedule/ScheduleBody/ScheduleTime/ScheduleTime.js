@@ -4,7 +4,11 @@ import * as styles from "./ScheduleTime.module.css";
 
 const ScheduleTime = ({ taken, start, end, clicked }) => {
   return (
-    <div className={!taken ? styles.free : styles.taken} onClick={clicked}>
+    <button
+      className={!taken ? styles.free : styles.taken}
+      disabled={taken}
+      onClick={clicked}
+    >
       <p className={styles.text}>
         {!taken ? "Slobodan teren" : "Zauzet teren"}
       </p>
@@ -18,7 +22,7 @@ const ScheduleTime = ({ taken, start, end, clicked }) => {
           <sup>{end.slice(2, 4)}</sup>
         </p>
       </div>
-    </div>
+    </button>
   );
 };
 
