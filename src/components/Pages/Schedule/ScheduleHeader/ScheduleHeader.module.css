@@ -18,10 +18,17 @@
 
 .calendar {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
 
   margin-bottom: var(--gap-lg);
+}
+
+.two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.three {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .day {

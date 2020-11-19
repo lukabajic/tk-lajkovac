@@ -11,15 +11,16 @@ import { ArrowLeft, ArrowRight } from "../../../Utility/Icons";
 const ScheduleBody = ({ selected, prevCourt, nextCourt, schedule }) => {
   const days = ["today", "tomorrow", "dayAfter"];
 
-  let renderedSchedule = null;
-  if (schedule) {
+  const renderSchedule = () => {
+    if (!schedule) {
+      return;
+    }
+
     const day = schedule[days[selected.day]];
     const court = day.courts[selected.court];
 
-    renderedSchedule = court.map((time) => (
-      <ScheduleTime key={time.start} {...time} />
-    ));
-  }
+    return court.map((time) => <ScheduleTime key={time.start} {...time} />);
+  };
 
   return (
     <main className={styles.court}>
@@ -32,7 +33,7 @@ const ScheduleBody = ({ selected, prevCourt, nextCourt, schedule }) => {
           <ArrowRight />
         </ButtonIcon>
       </div>
-      <div className={styles.schedule}>{renderedSchedule}</div>
+      <div className={styles.schedule}>{renderSchedule()}</div>
     </main>
   );
 };
