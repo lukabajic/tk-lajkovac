@@ -1,0 +1,60 @@
+.free,
+.taken {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: var(--gap-md) var(--gap-md) var(--gap-md) calc(var(--gap-md) + 5px);
+  border-radius: var(--border-radius);
+
+  color: var(--color-grey);
+}
+
+.free::before,
+.taken::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+}
+
+.free {
+  box-shadow: var(--box-shadow);
+}
+
+.free::before {
+  background-color: var(--color-primary);
+}
+
+.free:hover {
+  cursor: pointer;
+}
+
+.taken::before {
+  background-color: var(--color-red);
+}
+
+.text {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.time {
+  font-size: 1.4rem;
+  font-weight: 500;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.start {
+  color: var(--color-black);
+  margin-bottom: var(--gap-xs);
+}

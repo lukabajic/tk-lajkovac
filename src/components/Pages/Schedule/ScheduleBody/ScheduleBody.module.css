@@ -1,0 +1,32 @@
+.court {
+  flex: 1;
+  overflow: auto;
+
+  background-color: var(--color-white);
+  box-shadow: var(--box-shadow);
+  border-radius: 2.4rem 2.4rem 0 0;
+
+  margin-top: calc(-1 * var(--gap-md));
+  padding: var(--gap-md);
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: var(--gap-lg);
+}
+
+.where {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.schedule {
+  padding-bottom: var(--gap-md);
+}
+
+.schedule > *:not(:last-child) {
+  margin-bottom: var(--gap-md);
+}
