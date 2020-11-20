@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
+import OpenSocket from "socket.io-client";
 
 import Index from "./Pages/Index/Index";
 import Register from "./Pages/Register";
@@ -13,9 +14,26 @@ import Loader from "../components/Utility/Loader/Loader";
 import Sidebar from "../components/Sidebar/Sidebar";
 import SidebarToggler from "../components/Sidebar/SidebarToggler/SidebarToggler";
 
-import { authCheckStorage } from "../store/actions";
+import { authCheckStorage, scheduleSuccess } from "../store/actions";
 
 const App = ({ loading, token, authCheckStorage, user }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (token) {
+      const socket = OpenSocket("http://localhost:8000");
+      socket.on("schedule", (data) => {
+        switch (data.action) {
+          case "time":
+            dispatch(scheduleSuccess(data.schedule));
+            break;
+          default:
+            break;
+        }
+      });
+    }
+  }, [token, dispatch]);
+
   useEffect(() => {
     if (!token) {
       authCheckStorage();
