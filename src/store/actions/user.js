@@ -4,6 +4,13 @@ const userStart = () => ({ type: actionTypes.USER_START });
 
 export const userSuccess = (user) => ({ type: actionTypes.USER_SUCCESS, user });
 
+const allUsersSuccess = (users) => ({
+  type: actionTypes.ALL_USER_SUCCESS,
+  users,
+});
+
+export const updateUser = (user) => ({ type: actionTypes.UPDATE_USER, user });
+
 const userFail = (error) => ({ type: actionTypes.USER_FAIL, error });
 
 export const fetchCurUser = (token) => async (dispatch) => {
@@ -23,6 +30,31 @@ export const fetchCurUser = (token) => async (dispatch) => {
     if (!data.error) {
       const { user } = data;
       dispatch(userSuccess(user));
+    } else {
+      dispatch(userFail(data.error));
+    }
+  } catch (err) {
+    dispatch(userFail(err.message || err));
+  }
+};
+
+export const fetchAllUsers = (token) => async (dispatch) => {
+  dispatch(userStart());
+
+  const URI = `http://localhost:8000/api/v1/user/get-all`;
+
+  try {
+    const res = await fetch(URI, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+
+    if (!data.error) {
+      const { users } = data;
+      dispatch(allUsersSuccess(users));
     } else {
       dispatch(userFail(data.error));
     }

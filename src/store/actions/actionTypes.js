@@ -7,6 +7,8 @@ export const LOGOUT = "LOGOUT";
 export const USER_START = "USER_START";
 export const USER_FAIL = "USER_FAIL";
 export const USER_SUCCESS = "USER_SUCCESS";
+export const UPDATE_USER = "UPDATE_USER";
+export const ALL_USER_SUCCESS = "ALL_USER_SUCCESS";
 
 export const SIDEBAR_TOGGLE = "SIDEBAR_TOGGLE";
 

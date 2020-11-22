@@ -2,6 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   user: null,
+  users: null,
   error: null,
   loading: false,
 };
@@ -18,6 +19,29 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.user,
+        error: null,
+        loading: false,
+      };
+    case actionTypes.UPDATE_USER:
+      const updatedUsers =
+        state.users &&
+        state.users.map((user) => {
+          if (user.userId === action.user.userId) {
+            return action.user;
+          } else {
+            return user;
+          }
+        });
+      return {
+        ...state,
+        users: updatedUsers,
+        error: null,
+        loading: false,
+      };
+    case actionTypes.ALL_USER_SUCCESS:
+      return {
+        ...state,
+        users: action.users,
         error: null,
         loading: false,
       };

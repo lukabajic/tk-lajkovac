@@ -9,12 +9,17 @@ import Login from "./Pages/Login";
 import Data from "./Pages/Data";
 import Verification from "./Pages/Verification";
 import Schedule from "./Pages/Schedule/Schedule";
+import Users from "./Pages/Users/Users";
 
 import Loader from "../components/Utility/Loader/Loader";
 import Sidebar from "../components/Sidebar/Sidebar";
 import SidebarToggler from "../components/Sidebar/SidebarToggler/SidebarToggler";
 
-import { authCheckStorage, scheduleSuccess } from "../store/actions";
+import {
+  authCheckStorage,
+  scheduleSuccess,
+  updateUser,
+} from "../store/actions";
 
 const App = ({ loading, token, authCheckStorage, user }) => {
   const dispatch = useDispatch();
@@ -26,6 +31,7 @@ const App = ({ loading, token, authCheckStorage, user }) => {
         switch (data.action) {
           case "time":
             dispatch(scheduleSuccess(data.schedule));
+            dispatch(updateUser(data.user));
             break;
           default:
             break;
@@ -96,6 +102,9 @@ const App = ({ loading, token, authCheckStorage, user }) => {
       <Switch>
         <Route path="/schedule" exact>
           <Schedule />
+        </Route>
+        <Route path="/users" exact>
+          <Users />
         </Route>
         <Route path="/" exact>
           <Index />
