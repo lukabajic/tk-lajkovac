@@ -36,7 +36,8 @@ const LoginForm = ({ error, auth }) => {
         meta: {
           valid: false,
           touched: false,
-          error: null,
+  focused && inputStyles.push(styles.borderBlue);
+  error: null,
         },
       },
     },
